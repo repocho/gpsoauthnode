@@ -44,7 +44,6 @@ GoogleOauth.prototype.request = function (options, callback) {
             opt[k] = options.options[k];
         });
     }
-    console.dir(options);
     if (typeof this._token !== "undefined") opt.headers.Authorization = "GoogleLogin auth=" + this._token;
     opt.headers['User-Agent'] = USER_AGENT;
     opt.headers["Content-type"] = options.contentType || "application/x-www-form-urlencoded";
@@ -56,8 +55,6 @@ GoogleOauth.prototype.request = function (options, callback) {
             body += chunk;
         });
         res.on('end', function () {
-            console.dir(res.statusCode);
-            console.dir(body);
             var err;
             if (res.statusCode >= 400) {
                 console.dir(err);
@@ -71,7 +68,6 @@ GoogleOauth.prototype.request = function (options, callback) {
             try {
                 if (contentType === "application/json") {
                     response = JSON.parse(response);
-                    console.log(response);
                 }
             } catch (e) {
                 if (typeof callback === "function") callback(new Error("unable to parse json response: " + e), null, res);
