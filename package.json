@@ -15,12 +15,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/billyriantono/gpsoauthnode.git"
+    "url": "git+https://github.com/billyriantono/gpsoauthnode.git"
   },
   "keywords": [
     "gpsoauth",
     "google",
     "api",
     "node"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/billyriantono/gpsoauthnode/issues"
+  },
+  "homepage": "https://github.com/billyriantono/gpsoauthnode#readme",
+  "directories": {
+    "example": "examples"
+  }
 }
