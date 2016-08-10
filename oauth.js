@@ -57,7 +57,6 @@ GoogleOauth.prototype.request = function (options, callback) {
         res.on('end', function () {
             var err;
             if (res.statusCode >= 400) {
-                console.dir(err);
                 err = new Error(res.statusCode + " error from server");
                 err.statusCode = res.statusCode;
                 err.response = res;
