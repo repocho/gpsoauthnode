@@ -85,7 +85,7 @@ GoogleOauth.prototype.request = function (options, callback) {
 };
 
 
-GoogleOauth.prototype.oauth = function (email, master_token, android_id, service, app, client_sig, callback) {
+GoogleOauth.prototype.oauth = function (email, master_token, android_id, service, app, client_sig, device_country='us', operatorCountry='us', lang='en', callback) {
 
     var data = {
         accountType: "HOSTED_OR_GOOGLE",
@@ -97,9 +97,9 @@ GoogleOauth.prototype.oauth = function (email, master_token, android_id, service
         androidId: android_id,
         app: app,
         client_sig: client_sig,
-        device_country: "us",
-        operatorCountry: "us",
-        lang: "en",
+        device_country: device_country,
+        operatorCountry: operatorCountry,
+        lang: lang,
         sdk_version: "17"
     };
 
@@ -114,7 +114,7 @@ GoogleOauth.prototype.oauth = function (email, master_token, android_id, service
         callback(err, err ? null : oauthUtil.parseKeyValues(data));
     });
 };
-GoogleOauth.prototype.login = function (email, password, android_id, callback) {
+GoogleOauth.prototype.login = function (email, password, android_id, device_country, operatorCountry, lang, callback) {
     var data = {
         accountType: "HOSTED_OR_GOOGLE",
         Email: email.trim(),
@@ -124,9 +124,9 @@ GoogleOauth.prototype.login = function (email, password, android_id, callback) {
         service: "ac2dm",
         source: "android",
         androidId: android_id,
-        device_country: "us",
-        operatorCountry: "us",
-        lang: "en",
+        device_country: device_country,
+        operatorCountry: operatorCountry,
+        lang: lang,
         sdk_version: "17"
     };
     this.request({
